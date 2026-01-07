@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Natiq AI - Arabic Voice Generator",
+  "description": "Professional Arabic Text-to-Speech and Real-time Conversational Agent using Gemini 2.5 Audio capabilities.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
