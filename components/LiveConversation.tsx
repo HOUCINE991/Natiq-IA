@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { GoogleGenAI, LiveServerMessage, Modality } from "@google/genai";
-import { VoiceSettings, Language } from '../types';
+import { VoiceSettings, Language, Country } from '../types';
 import { decodeAudioData, createPcmBlob, base64ToUint8Array } from '../utils/audioUtils';
 import { translations } from '../utils/translations';
 import AudioVisualizer from './AudioVisualizer';
@@ -127,6 +127,14 @@ const LiveConversation: React.FC<LiveConversationProps> = ({ settings, language 
         3. Keep responses concise and natural for a voice conversation.
         4. If the user speaks English, you can reply in English but keep the accent if possible, or reply in Arabic if appropriate for the persona.
         5. Be helpful and engaging.
+        
+        ${settings.country === Country.LIBYA ? `
+        Special Instructions for Libya:
+        - Use authentic Libyan Arabic dialect (Libyan Darja).
+        - Use natural rhythm, commonly used Libyan expressions, and a friendly, persuasive tone.
+        - Adapt your speech to Libyan culture, daily speech patterns, and local buying behavior.
+        - Prioritize authentic Libyan dialect over Modern Standard Arabic.
+        ` : ''}
       `;
 
       const sessionPromise = ai.live.connect({

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GoogleGenAI, Modality } from "@google/genai";
-import { Language, VoiceSettings } from '../types';
+import { Language, VoiceSettings, Country } from '../types';
 import { base64ToUint8Array } from '../utils/audioUtils';
 import { translations } from '../utils/translations';
 import AudioPlayer from './AudioPlayer';
@@ -40,6 +40,15 @@ const TTSGenerator: React.FC<TTSGeneratorProps> = ({ settings, language }) => {
         - Gender: ${settings.gender}
         - Voice Persona: ${settings.voiceName}
         
+        ${settings.country === Country.LIBYA ? `
+        Special Instructions for Libya:
+        - Use authentic Libyan Arabic dialect (Libyan Darja).
+        - Use natural pronunciation and commonly used Libyan expressions.
+        - Ensure the tone is friendly, persuasive, and suitable for marketing and e-commerce ads.
+        - Adapt wording to Libyan culture, daily speech, and buying behavior.
+        - Prioritize authentic Libyan dialect over Modern Standard Arabic.
+        ` : ''}
+
         Text to read:
         "${text}"
       `;

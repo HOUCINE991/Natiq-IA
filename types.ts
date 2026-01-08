@@ -11,7 +11,8 @@ export enum Country {
   SYRIA = 'Syria',
   LEBANON = 'Lebanon',
   JORDAN = 'Jordan',
-  PALESTINE = 'Palestine'
+  PALESTINE = 'Palestine',
+  LIBYA = 'Libya'
 }
 
 export const COUNTRY_DIALECTS: Record<Country, string[]> = {
@@ -27,7 +28,8 @@ export const COUNTRY_DIALECTS: Record<Country, string[]> = {
   [Country.SYRIA]: ['Syrian (Damascene)', 'Syrian (Coastal)'],
   [Country.LEBANON]: ['Lebanese Arabic'],
   [Country.JORDAN]: ['Jordanian Arabic'],
-  [Country.PALESTINE]: ['Palestinian Arabic']
+  [Country.PALESTINE]: ['Palestinian Arabic'],
+  [Country.LIBYA]: ['General Libyan (Darja)', 'Tripolitan', 'Cyrenaican', 'Fezzani']
 };
 
 export enum Gender {
