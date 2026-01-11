@@ -29,7 +29,7 @@ const LanguageSwitcher = ({ current, onChange }: { current: Language, onChange: 
   <div className="flex items-center gap-1 bg-slate-900/50 border border-slate-700/50 rounded-lg p-1">
     <button
       onClick={() => onChange(Language.EN)}
-      className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
+      className={`px-2 py-1.5 rounded-md text-xs font-bold transition-all ${
         current === Language.EN 
           ? 'bg-indigo-600 text-white shadow-sm' 
           : 'text-slate-400 hover:text-slate-200'
@@ -40,7 +40,7 @@ const LanguageSwitcher = ({ current, onChange }: { current: Language, onChange: 
     </button>
     <button
       onClick={() => onChange(Language.AR)}
-      className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all ${
+      className={`px-2 py-1.5 rounded-md text-xs font-bold transition-all ${
         current === Language.AR 
           ? 'bg-indigo-600 text-white shadow-sm' 
           : 'text-slate-400 hover:text-slate-200'
@@ -48,6 +48,17 @@ const LanguageSwitcher = ({ current, onChange }: { current: Language, onChange: 
       aria-label="Switch to Arabic"
     >
       AR
+    </button>
+    <button
+      onClick={() => onChange(Language.MA)}
+      className={`px-2 py-1.5 rounded-md text-xs font-bold transition-all ${
+        current === Language.MA 
+          ? 'bg-indigo-600 text-white shadow-sm' 
+          : 'text-slate-400 hover:text-slate-200'
+      }`}
+      aria-label="Switch to Moroccan Arabic"
+    >
+      MA
     </button>
   </div>
 );
@@ -64,6 +75,9 @@ const Layout: React.FC<LayoutProps> = ({
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeModal, setActiveModal] = useState<ModalType>(ModalType.NONE);
   const t = translations[language];
+
+  // Helper to determine text direction
+  const getDir = () => (language === Language.EN ? 'ltr' : 'rtl');
 
   const updateSetting = (key: keyof VoiceSettings, value: any) => {
     onSettingsChange({ ...settings, [key]: value });
@@ -120,7 +134,7 @@ const Layout: React.FC<LayoutProps> = ({
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-slate-900 text-slate-100 font-sans" dir={language === Language.AR ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen flex flex-col md:flex-row bg-slate-900 text-slate-100 font-sans" dir={getDir()}>
       
       {/* Mobile Header */}
       <div className="md:hidden bg-slate-800/90 backdrop-blur-md p-4 flex justify-between items-center border-b border-slate-700/50 sticky top-0 z-30 shadow-lg">
@@ -136,7 +150,7 @@ const Layout: React.FC<LayoutProps> = ({
       {/* Sidebar (Desktop & Mobile Drawer via Settings) */}
       <aside className={`
         fixed inset-y-0 start-0 z-40 w-80 bg-slate-800 border-e border-slate-700 transform transition-transform duration-300 ease-in-out overflow-y-auto flex flex-col shadow-2xl
-        ${isSidebarOpen ? 'translate-x-0' : (language === Language.AR ? 'translate-x-full' : '-translate-x-full')}
+        ${isSidebarOpen ? 'translate-x-0' : (getDir() === 'rtl' ? 'translate-x-full' : '-translate-x-full')}
         md:relative md:translate-x-0 md:shadow-none
       `}>
         <div className="flex-1 p-6">

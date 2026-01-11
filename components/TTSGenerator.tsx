@@ -40,6 +40,15 @@ const TTSGenerator: React.FC<TTSGeneratorProps> = ({ settings, language }) => {
         - Gender: ${settings.gender}
         - Voice Persona: ${settings.voiceName}
         
+        ${settings.country === Country.EGYPT ? `
+        Special Instructions for Egypt:
+        - Use authentic Egyptian Arabic dialect (Masri/Cairene/Sa‘idi/Alexandrian based on selection: ${settings.dialect}).
+        - Pronunciation: Natural, clear, and conversational.
+        - Style: Friendly, expressive, and confident.
+        - Context: Suitable for advertising, social media, storytelling, or customer support.
+        - Avoid Modern Standard Arabic unless explicitly requested; prioritize the dialect.
+        ` : ''}
+
         ${settings.country === Country.LIBYA ? `
         Special Instructions for Libya:
         - Use authentic Libyan Arabic dialect (Libyan Darja).
@@ -47,6 +56,15 @@ const TTSGenerator: React.FC<TTSGeneratorProps> = ({ settings, language }) => {
         - Ensure the tone is friendly, persuasive, and suitable for marketing and e-commerce ads.
         - Adapt wording to Libyan culture, daily speech, and buying behavior.
         - Prioritize authentic Libyan dialect over Modern Standard Arabic.
+        ` : ''}
+
+        ${settings.country === Country.MOROCCO ? `
+        Special Instructions for Morocco:
+        - Use authentic Moroccan Arabic dialect (Moroccan Darija).
+        - Use natural pronunciation and commonly used Moroccan expressions.
+        - Ensure the tone is culturally appropriate for Morocco.
+        - Adapt wording to Moroccan daily speech.
+        - Prioritize authentic Darija over Modern Standard Arabic unless the text is strictly formal.
         ` : ''}
 
         Text to read:

@@ -128,12 +128,28 @@ const LiveConversation: React.FC<LiveConversationProps> = ({ settings, language 
         4. If the user speaks English, you can reply in English but keep the accent if possible, or reply in Arabic if appropriate for the persona.
         5. Be helpful and engaging.
         
+        ${settings.country === Country.EGYPT ? `
+        Special Instructions for Egypt:
+        - Speak in authentic Egyptian Arabic (${settings.dialect}).
+        - Maintain a friendly, expressive, and confident tone.
+        - Use natural Egyptian idioms and cultural references appropriate for advertising, storytelling, or general conversation.
+        - Avoid Modern Standard Arabic unless necessary.
+        ` : ''}
+
         ${settings.country === Country.LIBYA ? `
         Special Instructions for Libya:
         - Use authentic Libyan Arabic dialect (Libyan Darja).
         - Use natural rhythm, commonly used Libyan expressions, and a friendly, persuasive tone.
         - Adapt your speech to Libyan culture, daily speech patterns, and local buying behavior.
         - Prioritize authentic Libyan dialect over Modern Standard Arabic.
+        ` : ''}
+
+        ${settings.country === Country.MOROCCO ? `
+        Special Instructions for Morocco:
+        - Use authentic Moroccan Arabic dialect (Moroccan Darija).
+        - Use natural rhythm, commonly used Moroccan expressions, and a culturally appropriate tone.
+        - Adapt your speech to Moroccan daily life and culture.
+        - Prioritize authentic Darija over Modern Standard Arabic.
         ` : ''}
       `;
 

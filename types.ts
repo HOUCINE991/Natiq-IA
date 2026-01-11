@@ -5,6 +5,7 @@ export enum Country {
   QATAR = 'Qatar',
   BAHRAIN = 'Bahrain',
   OMAN = 'Oman',
+  EGYPT = 'Egypt',
   MOROCCO = 'Morocco',
   ALGERIA = 'Algeria',
   TUNISIA = 'Tunisia',
@@ -22,6 +23,7 @@ export const COUNTRY_DIALECTS: Record<Country, string[]> = {
   [Country.QATAR]: ['Qatari'],
   [Country.BAHRAIN]: ['Bahraini'],
   [Country.OMAN]: ['Omani'],
+  [Country.EGYPT]: ['Egyptian Arabic (Cairene)', 'Upper Egyptian (Sa‘idi)', 'Alexandrian Egyptian'],
   [Country.MOROCCO]: ['Moroccan Darija (Urban)', 'Moroccan Darija (Rural)'],
   [Country.ALGERIA]: ['Algerian Darja'],
   [Country.TUNISIA]: ['Tunisian Arabic'],
@@ -57,7 +59,8 @@ export enum VoiceName {
 
 export enum Language {
   EN = 'en',
-  AR = 'ar'
+  AR = 'ar',
+  MA = 'ma'
 }
 
 export enum ModalType {
